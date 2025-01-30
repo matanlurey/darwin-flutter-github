@@ -35,6 +35,9 @@ jobs:
       - name: Flutter Doctor
         run: flutter doctor
 
+      - name: Flutter Devices
+        run: flutter devices
+
       - name: Run Test
         run: |
           pushd vendor/flutter/dev/devicelab
