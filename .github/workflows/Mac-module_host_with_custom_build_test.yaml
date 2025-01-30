@@ -10,8 +10,8 @@ on:
     branches: [main]
 
   # Cron job: Every 15m.
-  schedule:
-    - cron: "*/15 * * * *"
+  # schedule:
+  #   - cron: "*/15 * * * *"
 
 jobs:
   test:
@@ -34,3 +34,10 @@ jobs:
 
       - name: Flutter Doctor
         run: flutter doctor
+
+      - name: Run Test
+        run: |
+          pushd vendor/flutter/dev/devicelab
+          dart pub get
+          dart run bin/run.dart --task module_host_with_custom_build_test
+          popd
