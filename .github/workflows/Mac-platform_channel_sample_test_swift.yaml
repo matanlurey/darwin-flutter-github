@@ -35,7 +35,8 @@ jobs:
       - name: Flutter Doctor
         run: flutter doctor
 
-      - uses: futureware-tech/simulator-action@v4
+      - name: Create iOS (iPhone 15) Simulator
+        uses: futureware-tech/simulator-action@v4
         with:
           model: "iPhone 15"
 
