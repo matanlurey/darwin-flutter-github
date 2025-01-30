@@ -1,4 +1,4 @@
-name: Mac platform_channel_sample_test_swift
+name: Mac native_assets_ios_simulator
 
 on:
   # Post-submit.
@@ -47,5 +47,5 @@ jobs:
         run: |
           pushd vendor/flutter/dev/devicelab
           dart pub get
-          dart run bin/run.dart --task platform_channel_sample_test_swift
+          dart run bin/run.dart --task native_assets_ios_simulator
           popd
