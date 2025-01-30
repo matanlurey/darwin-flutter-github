@@ -1,0 +1,36 @@
+name: Mac module_host_with_custom_build_test
+
+on:
+  # Post-submit.
+  push:
+    branches: [main]
+
+  # Pre-submit.
+  pull_request:
+    branches: [main]
+
+  # Cron job: Every 15m.
+  schedule:
+    - cron: "*/15 * * * *"
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Fetch Flutter
+        run: ./setup.sh
+
+      - name: Setup PATH
+        run: |
+          echo "export PATH=\$PATH:${{github.workspace}}/vendor/flutter/bin" >> $GITHUB_PATH
+
+      - name: Flutter Doctor
+        run: flutter doctor
