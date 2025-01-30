@@ -1,4 +1,4 @@
-name: Mac module_host_with_custom_build_test
+name: Mac platform_channel_sample_test_swift
 
 on:
   # Post-submit.
@@ -35,6 +35,10 @@ jobs:
       - name: Flutter Doctor
         run: flutter doctor
 
+      - uses: futureware-tech/simulator-action@v4
+        with:
+          model: "iPhone 8"
+
       - name: Flutter Devices
         run: flutter devices
 
@@ -42,5 +46,5 @@ jobs:
         run: |
           pushd vendor/flutter/dev/devicelab
           dart pub get
-          dart run bin/run.dart --task module_host_with_custom_build_test
+          dart run bin/run.dart --task platform_channel_sample_test_swift
           popd
