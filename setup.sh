@@ -33,15 +33,8 @@ FLUTTER_ORIGIN="https://github.com/flutter/flutter"
 rm -rf "$FLUTTER_DIR"
 
 # Shallow clone the Flutter repository.
-git clone --depth 1 "$FLUTTER_ORIGIN" "$FLUTTER_DIR"
-
-# Set upstream.
-git -C "$FLUTTER_DIR" remote add upstream https://github.com/flutter/flutter.git
-
-# Checkout the Flutter version we need.
-git -C "$FLUTTER_DIR" fetch --no-tags --prune --depth=1 upstream master
-git -C "$FLUTTER_DIR" fetch --no-tags --prune --depth=1 upstream "$FLUTTER_SHA"
-git -C "$FLUTTER_DIR" checkout "$FLUTTER_SHA"
+git clone "$FLUTTER_ORIGIN" "$FLUTTER_DIR"
+git -C "$FLUTTER_DIR" checkout $FLUTTER_SHA
 
 # Set the engine prebuilt.
 export FLUTTER_PREBUILT_ENGINE_VERSION="$FLUTTER_SHA"
