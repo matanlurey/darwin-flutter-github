@@ -40,6 +40,7 @@ git -C "$FLUTTER_DIR" remote add upstream https://github.com/flutter/flutter.git
 
 # Checkout the Flutter version we need.
 git -C "$FLUTTER_DIR" fetch --no-tags --prune --depth=1 upstream master
+git -C "$FLUTTER_DIR" fetch --no-tags --prune --depth=1 upstream "$FLUTTER_SHA"
 git -C "$FLUTTER_DIR" checkout "$FLUTTER_SHA"
 
 # Set the engine prebuilt.
